@@ -5,9 +5,9 @@ import { PROJECT_URLS } from "../components/utilities.js";
  * @returns {Promise<Array>} Lista de estados de tareas.
  */
 
-export const getProjects = async () => {  
+export const getProjects = async (offset = 0, size = 5) => {
   try {
-    const response = await fetch(PROJECT_URLS.GET_PROJECTS);
+    const response = await fetch(`${PROJECT_URLS.GET_PROJECTS}?offset=${offset}&size=${size}`);
     if (!response.ok) throw new Error("Error fetching projects");
     return await response.json();
   } catch (error) {

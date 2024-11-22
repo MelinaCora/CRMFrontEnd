@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/Styless/GlobalStyless.css">
+    <link rel="stylesheet" href="../static/Styless/indexStyless.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="../img/2024-10-12 (10).ico">
+    <title>Proyectos</title>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo-container">
+                <img src="../img/logo2.png" alt="CRM Gestion Logo" class="logo">
+            </a>
+            <a href="index.html" class="home-logo-container">
+                <span class="material-icons home-icon" aria-label="Inicio">home</span>
+            </a>
+        </nav>
+    </header>
+
+    <section class="projects-section">        
+        <section class="projects-section">                                            
+            <h1>Tus Proyectos</h1>
+            <div class="button-container">
+                <button id="openNewProjectModal" class="button-primary">Nuevo Proyecto</button>
+                <button class="button-secondary">Filtrar por</button>
+            </div>                        
+            <div id="projects-container" class="projects-container"></div>
+        </section>
+        <div class="pagination">
+            <button class="pagination-btn">⟨</button>
+            <button class="pagination-btn">⟩</button>
+        </div>
+    </section>  
+    
+    <!-- Modal para Nuevo Proyecto -->
+    <div id="newProjectModal" class="modal hidden">
+        <div class="modal-content">
+          <h2>Nuevo Proyecto</h2>
+          <form id="newProjectForm">
+                <label for="projectName">Nombre del proyecto</label>
+                <input type="text" id="projectName" placeholder="Ingrese el nombre del proyecto" />
+      
+                <label for="campaignType">Seleccione campaña</label>
+                <select id="campaignType">
+                    <option value="">Seleccione una campaña</option>
+                    <!-- Más opciones -->
+                </select>
+      
+                <label for="client">Seleccione cliente</label>
+                <select id="client">
+                    <option value="">Seleccione un cliente</option>
+                    <!-- Más opciones -->
+                </select>
+      
+                <label for="startDate">Fecha de inicio</label>
+                <input type="date" id="startDate" />
+      
+                <label for="endDate">Fecha de fin</label>
+                <input type="date" id="endDate" />
+      
+                <div class ="center">
+                    <div>
+                        <button type="submit" class="button-primary">Crear Proyecto</button>                    
+                    </div>
+                    <div>                    
+                        <button type="button" class="button-secondary" id="closeModalBtn">Cerrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer bg-black">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Sobre nosotros</h3>
+                    <p class="footer-text">Somos una empresa dedicada a la creación de software innovador.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contactanos</h3>
+                    <ul class="footer-links">
+                        <li>
+                            <a>
+                                <i class="fab fa-whatsapp"></i> (11) 5331-1347
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fas fa-envelope"></i> melinaccora97@gmail.com
+                            </a>
+                        </li>                        
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Síguenos</h3>
+                    <div class="footer-social">                        
+                        <a>
+                            <i class="fab fa-instagram"></i> @crm_gestion
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 - CRM Gestion. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="../static/js/views/index.js"></script>
+    <script type="module" src="../static/js/components/modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

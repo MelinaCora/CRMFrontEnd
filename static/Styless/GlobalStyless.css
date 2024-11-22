@@ -1,0 +1,279 @@
+/* GlobalStyles.css */
+
+/* Colores generales */
+:root {
+    --background-color: rgb(54, 54, 54); /* Color de fondo general */
+    --primary-button-color: #363c97de; /* Color para botones primarios */
+    --primary-button-hover: #262c5e; /* Color hover para botones primarios */
+    --secondary-button-color: #6c757d; /* Color para botones secundarios */
+    --secondary-button-hover: #42474b; /* Color hover para botones secundarios */
+    --text-color: #ffffff; /* Color general del texto */
+    --background-header-color: black;
+}
+
+/* Fondo general */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif; /* Fuente global */
+    margin: 0;
+    padding: 0;
+}
+
+/* Botones primarios */
+.button-primary {
+    background-color: var(--primary-button-color);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+    background-color: var(--primary-button-hover);
+}
+
+/* Botones secundarios */
+.button-secondary {
+    background-color: var(--secondary-button-color);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-secondary:hover {
+    background-color: var(--secondary-button-hover);
+}
+
+/* Header */
+.site-header {
+    background-color: var(--background-header-color);
+    color: white;
+    padding: 0.5rem 1rem; /* Ajusta el padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar */
+.navbar {
+    display: flex; /* Flexbox para alinear horizontalmente */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--secondary-button-color);
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-top: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+/* Contenedor del ícono "Home" a la derecha */
+.home-logo-container {
+    margin-left: auto; /* Empuja el ícono al extremo derecho */
+    display: flex;
+    align-items: center;
+}
+/* Estilo del ícono "Home" */
+.home-icon {
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.home-icon:hover {
+    transform: scale(1.1); /* Efecto de zoom al pasar el cursor */
+    color: var(--secondary-button-hover);
+}
+
+.footer {
+    padding: 0.5rem 0;
+    background-color: var(--primary-bg-color);
+    color: var(--footer-text-color);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 1rem; /* Espaciado interno */   
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 0.5rem;
+    flex-basis: 30%;
+}
+
+.footer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    color: var(--text-color-white);
+}
+
+.footer-text {
+    font-size: 1rem;
+    color: var(--footer-text-color);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--footer-text-color);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--link-hover-color);
+}
+
+.footer-social a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: var(--footer-text-color);
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--link-hover-color);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    border-top: 1px solid var(--table-border-color);
+    padding-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-color-gray-light);
+}
+
+.bg-black{
+    background-color: black;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-section {
+    height: calc(100vh - 4rem);       
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var (--background-color);
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    text-align: center;         
+    margin-top: 50px;          
+    font-size: 2rem;
+}
+
+.button-container {
+    display: flex; 
+    gap: 10px; 
+}
+
+/* Estilos generales del modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;   
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden; 
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;    
+}  
+
+/* Contenedor del contenido del modal */
+.modal-content {
+background-color: #333333;
+padding: 20px;
+border-radius: 8px;
+width: 400px;
+max-width: 90%; 
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+color: #ffffff; 
+font-family: 'Arial', sans-serif;
+}
+  
+/* Título del modal */
+.modal-content h2 {
+font-size: 1.5rem;
+text-align: center;
+margin-bottom: 20px;
+color: #ffffff;
+border-bottom: 2px solid #5e3df4;
+padding-bottom: 10px;
+}
+  
+/* Formularios dentro del modal */
+.modal-content label {
+display: block;
+margin-top: 10px;
+font-weight: bold;
+color: #d1d1d1;
+}
+  
+.modal-content input,
+.modal-content select {
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+margin-bottom: 15px;
+border-radius: 4px;
+border: none;
+background-color: #444444;
+color: #ffffff;
+}
+
+.center{
+    margin: 0 auto;   
+    display: block;  
+}
+
+.no-scroll {
+    overflow: hidden; /* Oculta el scroll */
+}

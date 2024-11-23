@@ -1,17 +1,48 @@
+//projectService.js
+
 import { PROJECT_URLS } from "../components/utilities.js";
 
 /**
- * Obtiene todos los proyectos.
- * @returns {Promise<Array>} Lista de estados de tareas.
+ * Obtiene proyectos con o sin filtros.
+ * @param {number} offset - Número de página.
+ * @param {number} size - Cantidad de proyectos por página.
+ * @returns {Promise<Array>} Lista de proyectos.
  */
 
-export const getProjects = async (offset = 0, size = 5) => {
+
+export const getProjects = async (offset = 0, size = 5, filters = {}) => {
   try {
-    const response = await fetch(`${PROJECT_URLS.GET_PROJECTS}?offset=${offset}&size=${size}`);
+    // Crear un objeto de parámetros para URLSearchParams
+    const queryParams = new URLSearchParams();
+
+    // Asignar correctamente cada filtro
+    if (filters.projectName) {
+      queryParams.append('name', filters.projectName); // Correcto para el nombre del proyecto
+    }
+    if (filters.client !== undefined && filters.client !== null) {
+      queryParams.append('client', filters.client); // Correcto para cliente
+    }
+    if (filters.campaign !== undefined && filters.campaign !== null) {
+      queryParams.append('campaign', filters.campaign); // Correcto para campaña
+    }
+
+    // Asegurarse de agregar offset y size como números
+    queryParams.append('offset', offset);
+    queryParams.append('size', size);
+
+    // Construir la URL completa
+    const url = `${PROJECT_URLS.GET_PROJECTS}?${queryParams.toString()}`;
+    console.log('URL generada:', url);
+
+    // Realizar la solicitud al backend
+    const response = await fetch(url);
+
+    // Validar la respuesta
     if (!response.ok) throw new Error("Error fetching projects");
+
     return await response.json();
   } catch (error) {
-    console.error(error);
+    console.error("Error al cargar los proyectos:", error);
     throw error;
   }
 };

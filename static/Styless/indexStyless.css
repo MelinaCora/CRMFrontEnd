@@ -9,17 +9,17 @@
 .project-card {
     background-color: grey;
     color: #ffffff;
-    border-radius: 10px;
+    border-radius: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    padding: 15px;
     width: 100%;
     transition: transform 0.2s ease-in-out;
 }
 
 .card-conteiner {
     background-color:var(--background-color);
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 20px;
+    padding: 20px;
     text-align: center;
     display: flex; /* Organiza los datos dentro de la tarjeta en fila */
     flex-wrap: wrap; /* Permite que los datos salten de línea si es necesario */
@@ -81,3 +81,72 @@
     cursor: not-allowed;
 }
 
+/* Estilos generales para el contenedor de filtros */
+.filter-container {
+    background-color: #f9f9f9; /* Fondo claro */
+    border: 1px solid #ddd;   /* Borde suave */
+    border-radius: 8px;       /* Bordes redondeados */
+    padding: 16px;            /* Espaciado interno */
+    margin-top: 16px;         /* Separación del resto del contenido */
+    display: flex;
+    flex-wrap: wrap;          /* Hacer que los filtros se adapten en varias filas */
+    gap: 16px;                /* Separación entre filtros */
+}
+
+/* Ocultar el contenedor de filtros inicialmente */
+.filter-container.hidden {
+    display: none;
+}
+
+/* Grupos de filtros individuales */
+.filter-group {
+    display: flex;
+    flex-direction: column;   /* Colocar etiquetas y campos en columna */
+    flex: 1 1 200px;          /* Adaptarse al espacio disponible */
+    gap: 8px;                 /* Espaciado entre elementos del grupo */
+}
+
+/* Inputs y selects para los filtros */
+.input-filter,
+.select-filter {
+    padding: 8px;             /* Espaciado interno */
+    border: 1px solid #ccc;   /* Borde básico */
+    border-radius: 4px;       /* Bordes redondeados */
+    font-size: 14px;          /* Tamaño de texto */
+    width: 100%;              /* Usar todo el ancho del grupo */
+}
+
+/* Botones dentro de los filtros */
+.filter-group .button-secondary {
+    margin-top: 8px;          /* Espacio adicional sobre el botón */
+    align-self: flex-start;   /* Alinear a la izquierda */
+    padding: 8px 12px;        /* Tamaño del botón */
+    font-size: 14px;          /* Tamaño de texto */
+}
+
+/* Botón para limpiar filtros */
+.button-tertiary {
+    background-color: #fff;   /* Fondo blanco */
+    border: 1px solid #ddd;   /* Borde suave */
+    color: #333;              /* Texto oscuro */
+    border-radius: 4px;       /* Bordes redondeados */
+    padding: 8px 16px;        /* Espaciado interno */
+    font-size: 14px;          /* Tamaño de texto */
+    cursor: pointer;          /* Cursor interactivo */
+    transition: background-color 0.3s ease;
+}
+
+.button-tertiary:hover {
+    background-color: #f0f0f0; /* Fondo más oscuro al pasar el cursor */
+}
+
+/* Adaptación para dispositivos pequeños */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column; /* Cambiar a una sola columna en pantallas pequeñas */
+    }
+
+    .filter-group {
+        flex: 1 1 auto; /* Adaptarse automáticamente al ancho */
+    }
+}

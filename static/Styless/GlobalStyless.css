@@ -26,7 +26,7 @@ body {
     color: white;
     padding: 15px 20px;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -42,7 +42,7 @@ body {
     color: white;
     padding: 15px 20px;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -200,10 +200,14 @@ body {
     background-position: center;
 }
 
-h1 {
-    text-align: center;         
-    margin-top: 50px;          
-    font-size: 2rem;
+.center h1{
+    margin-left: 290px;
+    font-size: 36px;
+    margin-top: 0%;
+}
+
+.margin-top-div{
+    margin-top: 20px;
 }
 
 .button-container {
@@ -269,9 +273,15 @@ background-color: #444444;
 color: #ffffff;
 }
 
+.buttons-container {
+    display: flex; /* Activa Flexbox */
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin-top: 5px;
+}
+
 .center{
-    margin: 0 auto;   
-    display: block;  
+    display: flex;
+    justify-content: center; 
 }
 
 .no-scroll {

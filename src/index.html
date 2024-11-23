@@ -23,11 +23,16 @@
     </header>
 
     <section class="projects-section">        
-        <section class="projects-section">                                            
-            <h1>Tus Proyectos</h1>
-            <div class="button-container">
-                <button id="openNewProjectModal" class="button-primary">Nuevo Proyecto</button>
-                <button class="button-secondary">Filtrar por</button>
+        <section class="projects-section">                                     
+            
+            <div class="button-container margin-top-div">
+                <div>
+                    <button id="openNewProjectModal" class="button-primary">Nuevo Proyecto</button>
+                    <button id= "openFilterButton" class="button-secondary">Filtrar por</button>
+                </div>
+                <div class="center">                    
+                    <h1>Tus Proyectos</h1>                    
+                </div>
             </div>                        
             <div id="projects-container" class="projects-container"></div>
         </section>
@@ -36,6 +41,32 @@
             <button class="pagination-btn">⟩</button>
         </div>
     </section>  
+
+    <!-- Contenedor de filtros -->
+    <div id="filterContainer" class="filter-container hidden">
+        <div class="filter-group">
+            <label for="filterByName">Nombre:</label>
+            <input type="text" id="filterByName" class="input-filter" placeholder="Escribe un nombre">
+            <button id="applyNameFilter" class="button-secondary">Buscar</button>
+        </div>
+        <div class="filter-group">
+            <label for="filterByClient">Cliente:</label>
+            <select id="filterByClient" class="select-filter">
+                <option value="">Seleccione un cliente</option>
+                <!-- Opciones dinámicas -->
+            </select>
+            <button id="applyClientFilter" class="button-secondary">Aplicar</button>
+        </div>
+        <div class="filter-group">
+            <label for="filterByCampaign">Campaña:</label>
+            <select id="filterByCampaign" class="select-filter">
+                <option value="">Seleccione una campaña</option>
+                <!-- Opciones dinámicas -->
+            </select>
+            <button id="applyCampaignFilter" class="button-secondary">Aplicar</button>
+        </div>
+        <button id="clearFilters" class="button-tertiary">Limpiar Filtros</button>
+    </div>
     
     <!-- Modal para Nuevo Proyecto -->
     <div id="newProjectModal" class="modal hidden">
@@ -63,18 +94,18 @@
                 <label for="endDate">Fecha de fin</label>
                 <input type="date" id="endDate" />
       
-                <div class ="center">
-                    <div>
-                        <button type="submit" class="button-primary">Crear Proyecto</button>                    
-                    </div>
-                    <div>                    
-                        <button type="button" class="button-secondary" id="closeModalBtn">Cerrar</button>
-                    </div>
+                <div class="buttons-container">
+                    <button type="submit" class="button-primary">Crear Proyecto</button>               
                 </div>
+                
+                <div class="buttons-container">
+                    <button type="button" class="button-secondary" id="closeModalBtn">Cerrar</button>         
+                </div>
+                
             </form>
         </div>
     </div>
-
+    
     <footer class="footer bg-black">
         <div class="container">
             <div class="footer-content">
@@ -112,7 +143,7 @@
         </div>
     </footer>
     <script type="module" src="../static/js/views/index.js"></script>
-    <script type="module" src="../static/js/components/modal.js"></script>
+    <script type="module" src="../static/js/components/modal.js"></script>    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

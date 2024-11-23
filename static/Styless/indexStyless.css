@@ -21,10 +21,9 @@
     border-radius: 20px;
     padding: 20px;
     text-align: center;
-    display: flex; /* Organiza los datos dentro de la tarjeta en fila */
-    flex-wrap: wrap; /* Permite que los datos salten de línea si es necesario */
-    gap: 20px; /* Espaciado entre los datos */
-    flex-grow: 1; /* Hace que los datos ocupen el espacio disponible */
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 20px; /* Espaciado entre los datos */   
 }
 
 .project-card h2 {
@@ -81,72 +80,85 @@
     cursor: not-allowed;
 }
 
-/* Estilos generales para el contenedor de filtros */
 .filter-container {
-    background-color: #f9f9f9; /* Fondo claro */
-    border: 1px solid #ddd;   /* Borde suave */
-    border-radius: 8px;       /* Bordes redondeados */
-    padding: 16px;            /* Espaciado interno */
-    margin-top: 16px;         /* Separación del resto del contenido */
-    display: flex;
-    flex-wrap: wrap;          /* Hacer que los filtros se adapten en varias filas */
-    gap: 16px;                /* Separación entre filtros */
+    position: absolute; 
+    top: 50px;          
+    left: 0;
+    right: auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; 
+    z-index: 1000; 
 }
 
-/* Ocultar el contenedor de filtros inicialmente */
-.filter-container.hidden {
-    display: none;
+.button-container {
+    position: relative; 
 }
 
 /* Grupos de filtros individuales */
 .filter-group {
     display: flex;
-    flex-direction: column;   /* Colocar etiquetas y campos en columna */
-    flex: 1 1 200px;          /* Adaptarse al espacio disponible */
-    gap: 8px;                 /* Espaciado entre elementos del grupo */
+    flex-direction: column;  
+    flex: 1 1 200px;          
+    gap: 8px;                 
 }
 
 /* Inputs y selects para los filtros */
 .input-filter,
 .select-filter {
-    padding: 8px;             /* Espaciado interno */
-    border: 1px solid #ccc;   /* Borde básico */
-    border-radius: 4px;       /* Bordes redondeados */
-    font-size: 14px;          /* Tamaño de texto */
-    width: 100%;              /* Usar todo el ancho del grupo */
+    padding: 8px;             
+    border: 1px solid #ccc;  
+    border-radius: 4px;       
+    font-size: 14px;          
+    width: 100%;              
 }
 
 /* Botones dentro de los filtros */
 .filter-group .button-secondary {
-    margin-top: 8px;          /* Espacio adicional sobre el botón */
-    align-self: flex-start;   /* Alinear a la izquierda */
-    padding: 8px 12px;        /* Tamaño del botón */
-    font-size: 14px;          /* Tamaño de texto */
+    margin-top: 8px;          
+    align-self: flex-start;   
+    padding: 8px 12px;        
+    font-size: 14px;          
 }
 
 /* Botón para limpiar filtros */
 .button-tertiary {
-    background-color: #fff;   /* Fondo blanco */
-    border: 1px solid #ddd;   /* Borde suave */
-    color: #333;              /* Texto oscuro */
-    border-radius: 4px;       /* Bordes redondeados */
-    padding: 8px 16px;        /* Espaciado interno */
-    font-size: 14px;          /* Tamaño de texto */
-    cursor: pointer;          /* Cursor interactivo */
+    background-color: #fff;  
+    border: 1px solid #ddd;  
+    color: #333;             
+    border-radius: 4px;       
+    padding: 8px 16px;       
+    font-size: 14px;         
+    cursor: pointer;          
     transition: background-color 0.3s ease;
 }
 
 .button-tertiary:hover {
-    background-color: #f0f0f0; /* Fondo más oscuro al pasar el cursor */
+    background-color: #f0f0f0; 
+}
+
+#filterContainer {   
+    border: 1px solid #ccc;
+    width: 30%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff; /* Opcional */
+    position: absolute;
+    top: 50%; /* Mueve el centro verticalmente */
+    left: 50%; /* Mueve el centro horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta el desplazamiento del contenedor */
 }
 
 /* Adaptación para dispositivos pequeños */
 @media (max-width: 768px) {
     .filter-container {
-        flex-direction: column; /* Cambiar a una sola columna en pantallas pequeñas */
+        flex-direction: column;
     }
 
     .filter-group {
-        flex: 1 1 auto; /* Adaptarse automáticamente al ancho */
+        flex: 1 1 auto; 
     }
 }

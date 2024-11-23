@@ -94,11 +94,6 @@ const updatePaginationButtons = (projects) => {
     nextButton.disabled = projects.length < pageSize;
 };
 
-// Cargar filtros y proyectos al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    loadFilters();
-    loadProjects();
-});
 
 // Manejo del botón de aplicar filtros
 document.getElementById("applyNameFilter").addEventListener("click", () => {
@@ -121,9 +116,29 @@ document.getElementById("clearFilters").addEventListener("click", () => {
     document.getElementById("filterByName").value = '';
     document.getElementById("filterByClient").value = '';
     document.getElementById("filterByCampaign").value = '';
-    loadProjects();  // Volver a cargar los proyectos sin filtros
+    loadProjects(); 
 });
 
-document.getElementById("openFilterButton").addEventListener("click", () => {
-    document.getElementById("filterContainer").classList.remove("hidden");
+// Cargar filtros y proyectos al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    loadFilters();
+    loadProjects();
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const filterButton = document.getElementById("openFilterButton");
+    const filterContainer = document.getElementById("filterContainer");
+
+    console.log(filterButton);  // Verifica que el botón sea encontrado
+    console.log(filterContainer);  // Verifica que el contenedor sea encontrado
+
+    // Mostrar/Ocultar filtros al hacer clic en el botón
+    filterButton.addEventListener("click", function() {
+        if (filterContainer.style.display === "none" || filterContainer.style.display === "") {
+            filterContainer.style.display = "block";
+        } else {
+            filterContainer.style.display = "none";
+        }
+    });
+
 });

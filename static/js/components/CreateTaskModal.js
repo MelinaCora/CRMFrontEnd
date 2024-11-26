@@ -117,7 +117,7 @@ function createTask(projectId) {
     const taskDescription = document.getElementById('taskDescription').value;
     const userId = parseInt(document.getElementById('userSelect').value);
     const statusId = parseInt(document.getElementById('statusSelect').value);
-    const dueDateInput = document.getElementById('dueDate').value;
+    const dueDateInput = document.getElementById('TaskdueDate').value;
 
     // Verificar que los valores esenciales no estén vacíos
     if (!taskDescription || isNaN(userId) || isNaN(statusId) || !dueDateInput) {

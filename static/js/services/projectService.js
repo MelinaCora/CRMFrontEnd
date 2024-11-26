@@ -92,11 +92,11 @@ export const createProject = async (projectData) => {
  */
 export const updateProjectInteractions = async (projectId, interaction) => {
   try {
-    const formattedInteractions = interaction.map(interaction => ({
+    const formattedInteractions = {
       notes: interaction.notes,
       date: interaction.date, 
       interactionType: interaction.interactionType
-    }));
+    };
     const response = await fetch(PROJECT_URLS.UPDATE_PROJECT_INTERACTION(projectId), {
       method: "PATCH",
       headers: {
@@ -104,7 +104,6 @@ export const updateProjectInteractions = async (projectId, interaction) => {
       },
       body: JSON.stringify(formattedInteractions)
     });
-
     if (!response.ok) throw new Error("Error updating project interactions");
 
     return await response.json();
@@ -122,9 +121,7 @@ export const updateProjectTasks = async (projectId, task) => {
       dueDate: task.dueDate,
       user: task.user,
       status: task.status
-    };
-
-    
+    };    
     const response = await fetch(PROJECT_URLS.UPDATE_PROJECT_TASK(projectId), {
       method: "PATCH",
       headers: {

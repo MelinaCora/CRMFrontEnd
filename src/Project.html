@@ -58,6 +58,32 @@
         </section>
     </main>
 
+    <!-- Modal para agregar una interacción -->
+    <div id="interactionModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Crear Interaccion</h2>
+            <form id="interactionForm">
+                <label for="interactionDescription">Descripción de la interaccion</label>
+                <input type="text" id="interactionDescription" required />
+
+                <label for="interactionTypeSelect">Tipo de interaccion</label>
+                <select id="interactionTypeSelect" required>
+                    <!-- interacciones precargadas -->
+                </select>
+
+                <label for="dueDate">Fecha</label>
+                <input type="date" id="dueDate" required />
+
+                <div class="buttons-container modal-buttons">
+                    <button type="submit" class="button-primary">Crear interaccion</button>
+                </div>
+                <div class="buttons-container modal-buttons">
+                    <button type="button" id="closeModalBtn" class="button-secondary">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div id="taskModal" class="modal hidden">
         <div class="modal-content">
             <h2>Crear Tarea</h2>
@@ -87,6 +113,7 @@
             </form>
         </div>
     </div>
+    
 
     <footer class="footer bg-black">
         <div class="container">
@@ -126,5 +153,7 @@
     </footer>
     <script type="module" src="../static/js/views/projects.js"></script>
     <script type="module" src="../static/js/components/CreateTaskModal.js"></script>
+    <script type="module" src="../static/js/components/createInteractionModal.js"></script>
+
 </body>
 </html>

@@ -44,6 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
               `;
               interactionsContainer.appendChild(interactionDiv);
             });
+            if (projectData.interactions.length > 2) {
+                interactionsContainer.classList.add('scrollable');
+            }
           } else {
             const noInteractionsMessage = document.createElement('p');
             noInteractionsMessage.textContent = "No hay interacciones disponibles.";
@@ -65,11 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
               `;
               tasksContainer.appendChild(taskDiv);
             });
+            if (projectData.tasks.length > 2) {
+                tasksContainer.classList.add('scrollable');
+            }
           } else {
             const noTasksMessage = document.createElement('p');
             noTasksMessage.textContent = "No hay tareas disponibles.";
             tasksContainer.appendChild(noTasksMessage);
           }
+          
         }
       } catch (error) {
         console.error('Error al renderizar el proyecto:', error);

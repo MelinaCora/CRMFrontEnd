@@ -1,24 +1,23 @@
-import { getProjectById } from "../services/projectService.js"; // Importa el servicio
+import { getProjectById } from "../services/projectService.js";
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtener el ID del proyecto desde la URL
+    
     const urlParams = new URLSearchParams(window.location.search);
-    const projectId = urlParams.get('id'); // Suponiendo que la URL es algo como /project.html?id=ID
-  
-    // Función para obtener y renderizar el proyecto
+    const projectId = urlParams.get('id');   
+    
     async function renderProject(projectId) {
       try {
-        // Llamamos al servicio para obtener el proyecto por ID
+        
         const projectData = await getProjectById(projectId);
         console.log("datos del proyecto: ", projectData);
   
         if (projectData) {
-          // Verificar que las propiedades existen
+          
           const projectContainer = document.querySelector('.card-conteiner');
           const interactionsContainer = document.querySelector('.interaction-container');
           const tasksContainer = document.querySelector('.task-container');          
             
-          // Renderizar el proyecto
+          
           projectContainer.innerHTML = `
             <h3>${projectData.data.name}</h3>
             <p><strong>Inicio:</strong> ${new Date(projectData.data.start).toLocaleString()}</p>
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <p><strong>Dirección:</strong> ${projectData.data.client.address}</p>
           `;
   
-          // Renderizar las interacciones
+          
           if (projectData.interactions && projectData.interactions.length > 0) {
             projectData.interactions.forEach(interaction => {
               const interactionDiv = document.createElement('div');
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             interactionsContainer.appendChild(noInteractionsMessage);
           }
   
-          // Renderizar las tareas
+          
           if (projectData.tasks && projectData.tasks.length > 0) {
             projectData.tasks.forEach(task => {
               const taskDiv = document.createElement('div');
@@ -83,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   
-    // Llamar a la función para renderizar el proyecto
     if (projectId) {
       renderProject(projectId);
     }

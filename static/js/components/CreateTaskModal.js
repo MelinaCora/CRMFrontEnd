@@ -77,6 +77,9 @@ function loadTaskStatuses() {
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded");
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('id');  
+
     // Abrir el modal
     const openModalButton = document.querySelector(".add-task-btn");
     if (openModalButton) {
@@ -104,36 +107,37 @@ document.addEventListener('DOMContentLoaded', function () {
     if (taskForm) {
         taskForm.onsubmit = (event) => {
             event.preventDefault();
-            createTask();
+            createTask(projectId);
         };
     }
 });
 
 // Función para crear una tarea
-function createTask() {
+function createTask(projectId) {
     const taskDescription = document.getElementById('taskDescription').value;
     const userId = parseInt(document.getElementById('userSelect').value);
     const statusId = parseInt(document.getElementById('statusSelect').value);
+    const dueDateInput = document.getElementById('dueDate').value;
 
     // Verificar que los valores esenciales no estén vacíos
-    if (!taskDescription || isNaN(userId) || isNaN(statusId)) {
+    if (!taskDescription || isNaN(userId) || isNaN(statusId) || !dueDateInput) {
         console.error("Por favor, complete todos los campos.");
-        return;  // No enviar la solicitud si falta algún dato
+        return; // No enviar la solicitud si falta algún dato
     }
 
     const taskData = {
         name: taskDescription,
-        dueDate: new Date().toISOString(),
+        dueDate: new Date(dueDateInput).toISOString(), // Usar fecha seleccionada
         user: userId,
-        status:statusId
+        status: statusId
     };
 
-    updateProjectTasks(taskData)
+    updateProjectTasks(projectId, taskData)
         .then(response => {
-            console.log('Tarea creada', response);
-            closeModal();  // Cerrar el modal
+            console.log("Tarea creada:", response);
+            closeModal(); // Cerrar el modal después de crear la tarea
         })
         .catch(error => {
-            console.error("Error creando tarea", error);
+            console.error("Error creando tarea:", error);
         });
 }

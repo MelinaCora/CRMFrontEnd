@@ -12,21 +12,21 @@ import { PROJECT_URLS } from "../components/utilities.js";
 
 export const getProjects = async (offset = 0, size = 5, filters = {}) => {
   try {
-    // Crear un objeto de parámetros para URLSearchParams
+    
     const queryParams = new URLSearchParams();
 
     // Asignar correctamente cada filtro
     if (filters.projectName) {
-      queryParams.append('name', filters.projectName); // Correcto para el nombre del proyecto
+      queryParams.append('name', filters.projectName);
     }
     if (filters.client !== undefined && filters.client !== null) {
-      queryParams.append('client', filters.client); // Correcto para cliente
+      queryParams.append('client', filters.client);
     }
     if (filters.campaign !== undefined && filters.campaign !== null) {
-      queryParams.append('campaign', filters.campaign); // Correcto para campaña
+      queryParams.append('campaign', filters.campaign);
     }
 
-    // Asegurarse de agregar offset y size como números
+    
     queryParams.append('offset', offset);
     queryParams.append('size', size);
 
@@ -34,10 +34,10 @@ export const getProjects = async (offset = 0, size = 5, filters = {}) => {
     const url = `${PROJECT_URLS.GET_PROJECTS}?${queryParams.toString()}`;
     console.log('URL generada:', url);
 
-    // Realizar la solicitud al backend
+    
     const response = await fetch(url);
 
-    // Validar la respuesta
+    
     if (!response.ok) throw new Error("Error fetching projects");
 
     return await response.json();
@@ -76,7 +76,7 @@ export const createProject = async (projectData) => {
 
     if (!response.ok) throw new Error("Error creating project");
 
-    // Si la respuesta es exitosa, retorna la respuesta en formato JSON
+    
     return await response.json();
   } catch (error) {
     console.error(error);
@@ -94,7 +94,7 @@ export const updateProjectInteractions = async (projectId, interaction) => {
   try {
     const formattedInteractions = interaction.map(interaction => ({
       notes: interaction.notes,
-      date: interaction.date, // Asegurarse de que esté en el formato ISO 8601
+      date: interaction.date, 
       interactionType: interaction.interactionType
     }));
     const response = await fetch(PROJECT_URLS.UPDATE_PROJECT_INTERACTION(projectId), {
@@ -116,7 +116,7 @@ export const updateProjectInteractions = async (projectId, interaction) => {
 
 export const updateProjectTasks = async (projectId, task) => {
   try {
-    // Formatear la tarea en el formato requerido por el endpoint
+   
     const formattedTask = {
       name: task.name,
       dueDate: task.dueDate,
@@ -124,7 +124,7 @@ export const updateProjectTasks = async (projectId, task) => {
       status: task.status
     };
 
-    // Hacer la solicitud al servidor
+    
     const response = await fetch(PROJECT_URLS.UPDATE_PROJECT_TASK(projectId), {
       method: "PATCH",
       headers: {

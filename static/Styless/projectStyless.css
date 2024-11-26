@@ -1,24 +1,40 @@
 /* Main Section */
 main {
-    flex: 1;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     padding: 20px;
+}
+
+/* Estilos generales */
+section {
+    margin-bottom: 10px;
+}
+
+
+button {
+    margin-top: 10px;
 }
 
 /* Project Info */
 .project-info {
     flex: 1;
-    max-width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 30px;
 }
 
 .project-info .card {
+    width: 100%;
+    padding: 10px;
     background-color: grey;
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible */
+    display: flex;
+    flex-direction: column;
 }
+
 .card-conteiner {
     background-color: var(--background-color);
     border-radius: 20px;
@@ -27,6 +43,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height: 100%;
 }
   
 .project-info h3 {
@@ -39,41 +56,52 @@ main {
     font-size: 14px;
     margin: 5px 0;
 }
-  
-/* Tasks Section */
-.tasks, .interactions {
-flex: 1;
-max-width: 65%;
-}
-  
-.tasks h3, .interactions h3 {
-font-size: 18px;
-margin-bottom: 10px;
-color: #ffffff;
-}
-  
-.task-table, .interaction-table {
-    background-color: #2a2a2a;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-  
-.task-row, .interaction-row {
+
+
+.right-column {
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #3a3a3a;
+    flex-direction: column;
+    flex: 2;
+    width: 100%;
+    gap: 20px;
 }
-  
-.task-row:last-child, .interaction-row:last-child {
-    border-bottom: none;
-}
-  
-.task-row span, .interaction-row span {
+
+.tasks {
     flex: 1;
-    text-align: center;
+}
+
+.interactions {
+    margin-top: 10px;
+}
+
+.task-container, .interaction-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background-color: rgb(82, 81, 81);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.task, .interaction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espacio entre los elementos */
+    border-radius: 20px;
+    width: 100%; /* Ocupa el 100% del ancho dentro del contenedor */
+}
+
+.task-card, .interaction-card {
+    background-color: var(--background-color);
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%; /* Garantiza que cada tarjeta ocupe el 100% del ancho dentro de su contenedor */
+}
+
+.task-name, .task-status, .task-assigned, .interaction-description, .interaction-type {
+    flex: 1; /* Se expande para ocupar espacio igual */
 }
   
 .edit-btn {
@@ -91,21 +119,26 @@ background: none;
 }
 
 .add-task-btn, .add-interaction-btn {
-  background-color: var(--primary-button-color);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
+    background-color: var(--primary-button-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+    margin-bottom: 10px; /* Espacio entre el botón y el título */
 }
 
 .add-task-btn:hover, .add-interaction-btn:hover {
   background-color: var( --primary-button-hover);
+}
+
+/* Contenedor para el título y el botón de agregar */
+.section-header {
+    display: flex;
+    justify-content: space-between;  /* Alinea los elementos a los extremos */
+    align-items: center;
 }
   

@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    const closeModalButton = document.getElementById("closeModalBtn");
+    const closeModalButton = document.getElementById("closeTaskModalBtn");
     if (closeModalButton) {
         closeModalButton.addEventListener('click', () => {
             console.log("Botón de cerrar modal clickeado");

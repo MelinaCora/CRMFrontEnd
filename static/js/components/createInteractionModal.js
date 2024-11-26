@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    const closeModalButton = document.getElementById("closeModalBtn");
+    const closeModalButton = document.getElementById("closeInteractionModalBtn");
     if (closeModalButton) {
         closeModalButton.addEventListener("click", closeInteractionModal);
     }

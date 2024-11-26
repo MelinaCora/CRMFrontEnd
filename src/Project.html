@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="../img/2024-10-12 (10).ico">
-    <title>Proyectos</title>
+    <title>Detalle de proyecto</title>
 </head>
 <body>
     <header class="site-header">
@@ -29,42 +29,20 @@
         <section class="project-info">
             <div class="card">
                 <div class="card-conteiner">
-                    <h3>Nombre del proyecto</h3>
-                    <p>Inicio:</p>
-                    <p>Fin:</p>
-                    <p>Campaña:</p>
-                    <p>Cliente:</p>
-                    <p>Email:</p>
-                    <p>Teléfono:</p>
-                    <p>Compañía:</p>
-                    <p>Dirección:</p>
+                    <!-- La información del proyecto será inyectada aquí dinámicamente -->
+                    
                 </div>
             </div>
         </section>
     
         <section class="right-column">
-            <section class="tasks">                
+            <section class="tasks">
                 <div class="task-container">
                     <div class="section-header">
                         <h3>TAREAS</h3>
                         <button class="add-task-btn">+</button>
                     </div>
-                    <div class="task">
-                        <div class="task-card">
-                            <span class="task-name">Nombre tarea</span>
-                            <span class="task-status">Estado</span>
-                            <span class="task-assigned">Asignado a</span>
-                            <button class="edit-btn">✏️</button>
-                        </div>
-                    </div>
-                    <div class="task">
-                        <div class="task-card">
-                            <span class="task-name">Nombre tarea</span>
-                            <span class="task-status">Estado</span>
-                            <span class="task-assigned">Asignado a</span>
-                            <button class="edit-btn">✏️</button>
-                        </div>
-                    </div>
+                    <!-- Las tareas se inyectarán aquí -->
                 </div>
             </section>
     
@@ -74,18 +52,7 @@
                         <h3>INTERACCIONES</h3>
                         <button class="add-interaction-btn">+</button>
                     </div>
-                    <div class="interaction">
-                        <div class="interaction-card">
-                            <span class="interaction-description">Descripción de la interacción</span>
-                            <span class="interaction-type">Tipo de interacción</span>
-                        </div>
-                    </div>
-                    <div class="interaction">
-                        <div class="interaction-card">
-                            <span class="interaction-description">Descripción de la interacción</span>
-                            <span class="interaction-type">Tipo de interacción</span>
-                        </div>
-                    </div>
+                    <!-- Las interacciones se inyectarán aquí -->
                 </div>
             </section>
         </section>
@@ -127,5 +94,6 @@
             </div>
         </div>
     </footer>
+    <script type="module" src="../static/js/views/projects.js"></script>
 </body>
 </html>

@@ -50,7 +50,7 @@ export const getProjects = async (offset = 0, size = 5, filters = {}) => {
 export const getProjectById = async (id) => {
   try {
     const response = await fetch(PROJECT_URLS.GET_PROJECT_BY_ID(id));
-    if (!response.ok) throw new Error("Error fetching project by ID");
+    if (!response.ok) throw new Error("Error fetching project by ID");    
     return await response.json();
   } catch (error) {
     console.error(error);

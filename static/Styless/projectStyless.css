@@ -47,12 +47,12 @@ button {
 }
   
 .project-info h3 {
-    font-size: 24px; /* Tamaño más grande para destacar */
-    margin-bottom: 15px; /* Más espacio inferior */
-    color: #ffffff; /* Texto blanco */
-    font-weight: 700; /* Negrita para resaltar */
-    text-transform: uppercase; /* Convertir el texto a mayúsculas */
-    letter-spacing: 2px; /* Separación entre letras para más elegancia */
+    font-size: 24px;
+    margin-bottom: 15px; 
+    color: #ffffff;
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 2px;
 }
   
 .project-info p {
@@ -161,6 +161,6 @@ background: none;
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-    background-color: var(--primary-button-color); /* Color de la barra de desplazamiento */
-    border-radius: 8px; /* Bordes redondeados */
+    background-color: var(--primary-button-color);
+    border-radius: 8px; 
 }

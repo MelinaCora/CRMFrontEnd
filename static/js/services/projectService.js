@@ -83,3 +83,61 @@ export const createProject = async (projectData) => {
     throw error;
   }
 };
+
+/**
+ * Actualiza las interacciones de un proyecto.
+ * @param {number} projectId - ID del proyecto.
+ * @param {Object} interaction - Interacción a enviar.
+ * @returns {Promise} Respuesta del servidor.
+ */
+export const updateProjectInteractions = async (projectId, interaction) => {
+  try {
+    const formattedInteractions = interaction.map(interaction => ({
+      notes: interaction.notes,
+      date: interaction.date, // Asegurarse de que esté en el formato ISO 8601
+      interactionType: interaction.interactionType
+    }));
+    const response = await fetch(PROJECT_URLS.UPDATE_PROJECT_INTERACTION(projectId), {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formattedInteractions)
+    });
+
+    if (!response.ok) throw new Error("Error updating project interactions");
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error al actualizar interacciones:", error);
+    throw error;
+  }
+};
+
+export const updateProjectTasks = async (projectId, task) => {
+  try {
+    // Formatear la tarea en el formato requerido por el endpoint
+    const formattedTask = {
+      name: task.name,
+      dueDate: task.dueDate,
+      user: task.user,
+      status: task.status
+    };
+
+    // Hacer la solicitud al servidor
+    const response = await fetch(PROJECT_URLS.UPDATE_PROJECT_TASK(projectId), {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formattedTask)
+    });  
+
+    if (!response.ok) throw new Error("Error updating project tasks");
+
+    return await response.json(); 
+  } catch (error) {
+    console.error("Error al actualizar tareas:", error);
+    throw error; 
+  }
+};

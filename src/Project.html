@@ -58,6 +58,36 @@
         </section>
     </main>
 
+    <div id="taskModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Crear Tarea</h2>
+            <form id="taskForm">
+                <label for="taskDescription">Descripción de la tarea</label>
+                <input type="text" id="taskDescription" required />
+    
+                <label for="userSelect">Seleccionar Usuario</label>
+                <select id="userSelect" required>
+                    <!-- Usuarios precargados se cargarán aquí -->
+                </select>
+    
+                <label for="statusSelect">Seleccionar Estado</label>
+                <select id="statusSelect" required>
+                    <!-- Estados precargados se cargarán aquí -->
+                </select>
+
+                <label for="dueDate">Fecha de vencimiento:</label>
+                <input type="date" id="dueDate" required />
+    
+                <div class="buttons-container modal-buttons">
+                    <button type="submit" class="button-primary">Crear Tarea</button>
+                </div>
+                <div class="buttons-container modal-buttons">
+                    <button type="button" id="closeModalBtn" class="button-secondary">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <footer class="footer bg-black">
         <div class="container">
             <div class="footer-content">
@@ -95,5 +125,6 @@
         </div>
     </footer>
     <script type="module" src="../static/js/views/projects.js"></script>
+    <script type="module" src="../static/js/components/CreateTaskModal.js"></script>
 </body>
 </html>

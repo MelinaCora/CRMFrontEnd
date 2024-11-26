@@ -60,26 +60,32 @@ export const getProjectById = async (id) => {
 
 export const createProject = async (projectData) => {
   try {
+    
+    const requestBody = {
+      name: projectData.name,
+      start: new Date(projectData.startDate).toISOString(), 
+      end: new Date(projectData.endDate).toISOString(),
+      client: parseInt(projectData.client, 10), 
+      campaignType: parseInt(projectData.campaignType, 10)
+    };    
+    console.log("Enviando datos al servidor:", requestBody);    
     const response = await fetch(PROJECT_URLS.CREATE_PROJECT, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name: projectData.name,
-        start: projectData.startDate, 
-        end: projectData.endDate, 
-        client: parseInt(projectData.client), 
-        campaignType: parseInt(projectData.campaignType) 
-      }),
+      body: JSON.stringify(requestBody), 
     });
-
-    if (!response.ok) throw new Error("Error creating project");
-
     
+    if (!response.ok) {      
+      const errorDetails = await response.json();
+      console.error("Error al crear el proyecto:", errorDetails);
+      
+      throw new Error(errorDetails.message || "Error creating project");
+    }    
     return await response.json();
-  } catch (error) {
-    console.error(error);
+  } catch (error) {    
+    console.error("Ocurrió un error al intentar crear el proyecto:", error);
     throw error;
   }
 };

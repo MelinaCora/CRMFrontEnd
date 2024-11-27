@@ -324,3 +324,31 @@ color: #ffffff;
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  /* Estilo para el popup */
+.custom-swal {
+    background-color: var(--background-color);
+    border: 2px solid var(--secondary-button-hover);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+}
+
+/* Estilo para el botón de confirmación */
+.custom-confirm-button {
+    background-color: var(--primary-button-color);
+    color: #fff; 
+    border: none; 
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+
+.custom-confirm-button:hover {
+    background-color:var(--primary-button-hover); 
+}
+
+ 

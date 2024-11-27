@@ -3,11 +3,13 @@
 import { getUsers } from "../services/userService.js";
 import { getTaskStatus } from "../services/taskStatusService.js";
 import { updateTask } from "../services/taskService.js";
-import {getTaskById} from "../services/taskService.js";
+import { getTaskById } from "../services/taskService.js";
 
 const body = document.body;
 
 export function openEditModal(projectId,taskId) {
+
+    console.log("Abriendo modal para tarea con ID:", taskId, "y proyecto con ID:", projectId);
     const modal = document.getElementById("editTaskModal");
     console.log("Abriendo modal de edición...");    
 
@@ -123,14 +125,13 @@ function updateTaskData(event, taskId) {
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded"); 
-    const urlParams = new URLSearchParams(window.location.search);
-    const projectId = urlParams.get('id');      
-    body.addEventListener('click', function(event) {
-        
+         
+    body.addEventListener('click', function (event) {
         if (event.target && event.target.matches(".edit-btn")) {
-            const taskId = event.target.getAttribute('data-task-id'); 
-            console.log("Botón de abrir modal de edición clickeado para tarea con ID:", taskId);
-            openEditModal(projectId,taskId); 
+            const taskId = event.target.getAttribute('data-task-id');
+            const projectId = event.target.getAttribute('data-project-id');
+            console.log("Botón de abrir modal clickeado para tarea con ID:", taskId, "y projectId:", projectId);
+            openEditModal(projectId, taskId); 
         }
     });
 

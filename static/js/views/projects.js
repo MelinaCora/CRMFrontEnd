@@ -68,12 +68,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
               `;
               tasksContainer.appendChild(taskDiv);
-              // Obtener el botón de editar
+              
               const editButton = taskDiv.querySelector('.edit-btn');
         
-              // Añadir un eventListener para abrir el modal
+              
               editButton.addEventListener('click', () => {
-              // Pasar el ID de la tarea al abrir el modal
+              
                 openEditModal(task.id);
               });
             });

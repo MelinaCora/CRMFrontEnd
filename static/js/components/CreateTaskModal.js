@@ -59,7 +59,7 @@ function loadUsers() {
 
 function loadTaskStatuses() {
     const statusSelect = document.getElementById('statusSelect');
-    statusSelect.innerHTML = '';  // Limpiar opciones previas
+    statusSelect.innerHTML = '';  
 
     getTaskStatus()
         .then(statuses => {
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = urlParams.get('id');  
 
-    // Abrir el modal
+    
     const openModalButton = document.querySelector(".add-task-btn");
     if (openModalButton) {
         openModalButton.addEventListener('click', () => {
@@ -114,22 +114,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Función para crear una tarea
+
 function createTask(projectId) {
     const taskDescription = document.getElementById('taskDescription').value;
     const userId = parseInt(document.getElementById('userSelect').value);
     const statusId = parseInt(document.getElementById('statusSelect').value);
     const dueDateInput = document.getElementById('TaskdueDate').value;
 
-    // Verificar que los valores esenciales no estén vacíos
+    
     if (!taskDescription || isNaN(userId) || isNaN(statusId) || !dueDateInput) {
         console.error("Por favor, complete todos los campos.");
-        return; // No enviar la solicitud si falta algún dato
+        return; 
     }
 
     const taskData = {
         name: taskDescription,
-        dueDate: new Date(dueDateInput).toISOString(), // Usar fecha seleccionada
+        dueDate: new Date(dueDateInput).toISOString(),
         user: userId,
         status: statusId
     };
@@ -137,7 +137,7 @@ function createTask(projectId) {
     updateProjectTasks(projectId, taskData)
         .then(response => {
             console.log("Tarea creada:", response);
-            closeModal(); // Cerrar el modal después de crear la tarea
+            closeModal();
         })
         .catch(error => {
             console.error("Error creando tarea:", error);

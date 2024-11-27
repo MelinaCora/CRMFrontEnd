@@ -3,6 +3,8 @@
 import {getUsers}from"../services/userService.js";
 import { getTaskStatus } from "../services/taskStatusService.js"; 
 import { updateProjectTasks } from "../services/projectService.js"; 
+import { showTaskAddSuccesAlert, showErrorAlert, showInteractionAddSuccesAlert, showTaskUpdateSuccesAlert } from "../components/alerts.js";
+import { showSpinner,hideSpinner } from "../components/spinners.js";
 
 const body = document.body;
 
@@ -137,9 +139,11 @@ function createTask(projectId) {
     updateProjectTasks(projectId, taskData)
         .then(response => {
             console.log("Tarea creada:", response);
+            showTaskAddSuccesAlert();
             closeModal();
         })
         .catch(error => {
             console.error("Error creando tarea:", error);
+            showErrorAlert();
         });
 }

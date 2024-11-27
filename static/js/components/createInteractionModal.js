@@ -2,6 +2,7 @@
 
 import { updateProjectInteractions } from "../services/projectService.js";
 import { getInteractionTypes } from "../services/interactionTypeService.js";
+import { showInteractionAddSuccesAlert, showErrorAlert } from "./alerts.js";
 
 const body = document.body;
 
@@ -88,9 +89,11 @@ function createInteraction() {
     updateProjectInteractions(projectId, interactionData)
         .then(response => {
             console.log("Interacción creada:", response);
+            showInteractionAddSuccesAlert();
             closeInteractionModal(); 
         })
         .catch(error => {
+            showErrorAlert();
             console.error("Error creando interacción:", error);
         });
 }

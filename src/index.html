@@ -28,22 +28,13 @@
             <div class="button-container margin-top-div">
                 <div>
                     <button id="openNewProjectModal" class="button-primary">Nuevo Proyecto</button>
-                    <button id= "openFilterButton" class="button-secondary">Filtrar por</button>
                 </div>
                 <div class="center">                    
                     <h1>Tus Proyectos</h1>                    
                 </div>
-            </div>                        
-            <div id="projects-container" class="projects-container"></div>
-        </section>
-        <div class="pagination">
-            <button class="pagination-btn">⟨</button>
-            <button class="pagination-btn">⟩</button>
-        </div>
-    </section>  
-
-    <!-- Contenedor de filtros -->
-    <div id="filterContainer" class="filter-container hidden">
+            </div>
+            <!-- Contenedor de filtros -->
+    <div id="filterContainer" class="filter-container">
         <div class="filter-group">
             <label for="filterByName">Nombre:</label>
             <input type="text" id="filterByName" class="input-filter" placeholder="Escribe un nombre">
@@ -66,7 +57,14 @@
             <button id="applyCampaignFilter" class="button-secondary">Aplicar</button>
         </div>
         <button id="clearFilters" class="button-tertiary">Limpiar Filtros</button>
-    </div>
+    </div>                        
+            <div id="projects-container" class="projects-container"></div>
+        </section>
+        <div class="pagination">
+            <button class="pagination-btn">⟨</button>
+            <button class="pagination-btn">⟩</button>
+        </div>
+    </section>     
     
     <!-- Modal para Nuevo Proyecto -->
     <div id="newProjectModal" class="modal hidden">

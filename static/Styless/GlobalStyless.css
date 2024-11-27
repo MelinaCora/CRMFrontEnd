@@ -274,8 +274,8 @@ color: #ffffff;
 }
 
 .buttons-container {
-    display: flex; /* Activa Flexbox */
-    justify-content: center; /* Centra los botones horizontalmente */
+    display: flex; 
+    justify-content: center; 
     margin-top: 5px;
 }
 

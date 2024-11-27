@@ -128,9 +128,12 @@ function createTask(projectId) {
         return; 
     }
 
+    const dueDate = new Date(dueDateInput);
+    dueDate.setHours(23, 59, 59, 999);
+
     const taskData = {
         name: taskDescription,
-        dueDate: new Date(dueDateInput).toISOString(),
+        dueDate: dueDate.toISOString(),
         user: userId,
         status: statusId
     };

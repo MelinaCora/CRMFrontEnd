@@ -80,10 +80,13 @@ function createInteraction() {
         return;
     }
 
+    const dueDate = new Date(dateInput);
+    dueDate.setHours(23, 59, 59, 999);
+
     const interactionData = {
-        notes,
-        date: new Date(dateInput).toISOString(),
-        interactionType
+        notes: notes,
+        date: dueDate.toISOString(),
+        interactionType: interactionType,
     };
 
     updateProjectInteractions(projectId, interactionData)

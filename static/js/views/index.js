@@ -3,12 +3,14 @@
 import { getProjects } from "../services/projectService.js";
 import { getClients } from "../services/clientService.js";
 import { getCampaignTypes } from "../services/campaignTypeService.js";
+import { showSpinner, hideSpinner } from "../components/spinners.js";
 
 let currentPage = 0;
 const pageSize = 3;
 
 const loadFilters = async () => {
     try {
+      showSpinner();
       const clients = await getClients();      
       console.log("clientes obtenidos: ", clients)
       const campaigns = await getCampaignTypes();
@@ -26,6 +28,8 @@ const loadFilters = async () => {
       });
     } catch (error) {
       console.error("Error loading filters:", error);
+    } finally {
+      hideSpinner();  
     }
   };
 
@@ -33,6 +37,7 @@ const loadProjects = async (filters = {}) => {
     const container = document.getElementById("projects-container");
 
     try {
+        showSpinner();
         // Construir los filtros correctamente
         const queryFilters = {
             projectName: filters.projectName || undefined, // Asignar el nombre del proyecto si existe
@@ -64,6 +69,8 @@ const loadProjects = async (filters = {}) => {
     } catch (error) {
         console.error("Error al cargar los proyectos:", error);
         container.innerHTML = `<p>Error al cargar los proyectos. Por favor, inténtalo más tarde.</p>`;
+    } finally {
+      hideSpinner();  // Oculta el spinner después de cargar los proyectos (o si ocurre un error)
     }
 };
 

@@ -139,9 +139,8 @@
 }
 input::placeholder,
 textarea::placeholder {
-    color: #888;
-    font-style: italic; 
-    opacity: 1; 
+    color: var(--secondary-button-hover);
+    font-style: italic;
 }
 
 input:focus::placeholder,

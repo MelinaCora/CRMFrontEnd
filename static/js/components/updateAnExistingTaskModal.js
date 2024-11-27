@@ -4,8 +4,11 @@ import { getUsers } from "../services/userService.js";
 import { getTaskStatus } from "../services/taskStatusService.js";
 import { updateTask } from "../services/taskService.js";
 import { getTaskById } from "../services/taskService.js";
+import { showTaskUpdateSuccesAlert, showErrorAlert} from "../components/alerts.js";
 
 const body = document.body;
+let usersLoaded = false;
+let statusesLoaded = false;
 
 export function openEditModal(projectId,taskId) {
 
@@ -22,11 +25,12 @@ export function openEditModal(projectId,taskId) {
         console.log("Modal abierto");
 
         loadTaskData(projectId,taskId);
-        loadUsers();
-        loadTaskStatuses();
+        
     } else {
         console.log("No se encontró el modal de edición");
     }
+
+    setTimeout(() => modal.classList.remove("loading"), 500);
 }
 
 export function closeEditModal() {
@@ -47,7 +51,11 @@ export function closeEditModal() {
 
 function loadUsers() {
     const userSelect = document.getElementById('editUserSelect');
-    userSelect.innerHTML = '';
+    if (userSelect.options.length > 0) return;
+    console.log("Antes de limpiar:", userSelect.innerHTML); // Verifica el estado
+    userSelect.innerHTML = ''; // Limpia
+    console.log("Después de limpiar:", userSelect.innerHTML); // Debe estar vacío
+    console.log("Cargando usuarios...");
 
     getUsers()
         .then(users => {
@@ -65,7 +73,9 @@ function loadUsers() {
 
 function loadTaskStatuses() {
     const statusSelect = document.getElementById('editStatusSelect');
+    if (statusSelect.options.length > 0) return;
     statusSelect.innerHTML = ''; 
+    console.log("Cargando estados...");
 
     getTaskStatus()
         .then(statuses => {
@@ -82,6 +92,7 @@ function loadTaskStatuses() {
 }
 
 function loadTaskData(projectId, taskId) {
+    console.log("ID del proyecto en loadTaskData: ",projectId,"ID de la tarea: ", taskId);
     getTaskById(projectId, taskId)
         .then(task => {
             document.getElementById('editTaskDescription').value = task.name;
@@ -97,7 +108,7 @@ function loadTaskData(projectId, taskId) {
         });
 }
 
-function updateTaskData(event, taskId) {
+export function updateTaskData(event, taskId) {
     event.preventDefault();
 
     const description = document.getElementById('editTaskDescription').value;
@@ -125,15 +136,23 @@ function updateTaskData(event, taskId) {
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded"); 
-         
-    body.addEventListener('click', function (event) {
+    loadUsers();
+    loadTaskStatuses();
+
+    if (!body.classList.contains('listener-registered')) {
+        body.addEventListener('click', openEditModalHandler);
+        body.classList.add('listener-registered'); // Marca que el listener ya está registrado
+    }
+
+    // Función para manejar la apertura del modal
+    function openEditModalHandler(event) {
         if (event.target && event.target.matches(".edit-btn")) {
             const taskId = event.target.getAttribute('data-task-id');
             const projectId = event.target.getAttribute('data-project-id');
             console.log("Botón de abrir modal clickeado para tarea con ID:", taskId, "y projectId:", projectId);
             openEditModal(projectId, taskId); 
         }
-    });
+    }
 
     const closeModalButton = document.getElementById("closeEditTaskModalBtn");
     if (closeModalButton) {
@@ -144,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.log("No se encontró el botón de cerrar modal");
     }
-    
+
     const editTaskForm = document.getElementById('editTaskForm');
     if (editTaskForm) {
         editTaskForm.onsubmit = (event) => {

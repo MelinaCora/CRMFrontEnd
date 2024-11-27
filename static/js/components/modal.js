@@ -117,8 +117,8 @@ function createNewProject() {
     const projectName = document.getElementById('projectName').value;
     const campaignType = parseInt(document.getElementById('campaignType').value); 
     const client = parseInt(document.getElementById('client').value); 
-    const startDate = new Date(document.getElementById('startDate').value).toISOString();
-    const endDate = new Date(document.getElementById('endDate').value).toISOString();
+    const startDate = new Date(document.getElementById('startDate').value).toISOString().split('T')[0];
+    const endDate = new Date(document.getElementById('endDate').value).toISOString().split('T')[0];
     
     if (!projectName || isNaN(campaignType) || isNaN(client) || !startDate || !endDate) {
         console.error("Por favor, complete todos los campos.");

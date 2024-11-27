@@ -1,5 +1,6 @@
 import { getProjectById } from "../services/projectService.js";
 import { openEditModal } from '../components/updateAnExistingTaskModal.js';
+import { showSpinner, hideSpinner } from "../components/spinners.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     
@@ -8,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
     async function renderProject(projectId) {
       try {
+
+        showSpinner();
         
         const projectData = await getProjectById(projectId);
         console.log("datos del proyecto: ", projectData);
@@ -88,9 +91,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       } catch (error) {
         console.error('Error al renderizar el proyecto:', error);
+      }finally {
+      hideSpinner();  
       }
-    }
-  
+    }  
     if (projectId) {
       renderProject(projectId);
     }

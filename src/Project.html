@@ -113,6 +113,34 @@
             </form>
         </div>
     </div>
+
+    <div id="editTaskModal" class="modal hidden">
+        <div class="modal-content">
+          <h2>Editar Tarea</h2>
+          <form id="editTaskForm">
+            <label for="editTaskDescription">Descripción de la tarea</label>
+            <input type="text" id="editTaskDescription" required />
+      
+            <label for="editUserSelect">Seleccionar Usuario</label>
+            <select id="editUserSelect" required>
+              <!-- Opciones de usuario precargadas -->
+            </select>
+      
+            <label for="editStatusSelect">Seleccionar Estado</label>
+            <select id="editStatusSelect" required>
+              <!-- Opciones de estado precargadas -->
+            </select>
+      
+            <label for="editDueDate">Fecha de vencimiento</label>
+            <input type="date" id="editDueDate" required />
+      
+            <div class="buttons-container modal-buttons">
+              <button type="submit" class="button-primary">Guardar Cambios</button>
+              <button type="button" id="closeEditTaskModalBtn" class="button-secondary">Cancelar</button>
+            </div>
+          </form>
+        </div>
+    </div>
     
 
     <footer class="footer bg-black">
@@ -153,6 +181,7 @@
     </footer>
     <script type="module" src="../static/js/views/projects.js"></script>
     <script type="module" src="../static/js/components/CreateTaskModal.js"></script>
+    <script type="module" src="../static/js/components/updateAnExistingTaskModal.js"></script>
     <script type="module" src="../static/js/components/createInteractionModal.js"></script>
 
 </body>

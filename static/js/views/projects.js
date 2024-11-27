@@ -1,4 +1,5 @@
 import { getProjectById } from "../services/projectService.js";
+import { openEditModal } from '../components/updateAnExistingTaskModal.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     
@@ -59,13 +60,22 @@ document.addEventListener('DOMContentLoaded', function () {
               taskDiv.classList.add('task');
               taskDiv.innerHTML = `
                 <div class="task-card">
+                  <span class="task-id">${task.id}</span>
                   <span class="task-name">${task.name}</span>
                   <span class="task-status">${task.status ? task.status.name : 'No disponible'}</span>
                   <span class="task-assigned">${task.userAssigned ? task.userAssigned.name : 'No disponible'}</span>
-                  <button class="edit-btn">✏️</button>
+                  <button class="edit-btn" data-task-id="${task.id}">✏️</button>
                 </div>
               `;
               tasksContainer.appendChild(taskDiv);
+              // Obtener el botón de editar
+              const editButton = taskDiv.querySelector('.edit-btn');
+        
+              // Añadir un eventListener para abrir el modal
+              editButton.addEventListener('click', () => {
+              // Pasar el ID de la tarea al abrir el modal
+                openEditModal(task.id);
+              });
             });
             if (projectData.tasks.length > 2) {
                 tasksContainer.classList.add('scrollable');

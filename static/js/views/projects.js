@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
               taskDiv.classList.add('task');
               taskDiv.innerHTML = `
                 <div class="task-card">
-                  <span class="task-id">${task.id}</span>
                   <span class="task-name">${task.name}</span>
                   <span class="task-status">${task.status ? task.status.name : 'No disponible'}</span>
                   <span class="task-assigned">${task.userAssigned ? task.userAssigned.name : 'No disponible'}</span>

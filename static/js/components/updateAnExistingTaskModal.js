@@ -80,7 +80,7 @@ function loadTaskStatuses() {
 }
 
 function loadTaskData(projectId, taskId) {
-    getTaskById(projectId, taskId) // Pasa ambos IDs correctamente
+    getTaskById(projectId, taskId)
         .then(task => {
             document.getElementById('editTaskDescription').value = task.name;
             document.getElementById('editUserSelect').value = task.userAssigned.id;

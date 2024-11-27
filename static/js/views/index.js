@@ -3,7 +3,6 @@
 import { getProjects } from "../services/projectService.js";
 import { getClients } from "../services/clientService.js";
 import { getCampaignTypes } from "../services/campaignTypeService.js";
-import { getProjectById } from "../services/projectService.js";
 
 let currentPage = 0;
 const pageSize = 3;
@@ -75,7 +74,7 @@ const changePage = (direction) => {
   } else if (direction === "prev" && currentPage > 0) {
     currentPage--;
   }
-  loadProjects(); // Volver a cargar los proyectos con la nueva página
+  loadProjects();
 };
 
 // Listeners para los botones de paginación
@@ -131,14 +130,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     console.log(filterButton);  // Verifica que el botón sea encontrado
     console.log(filterContainer);  // Verifica que el contenedor sea encontrado
-
-    // Mostrar/Ocultar filtros al hacer clic en el botón
-    filterButton.addEventListener("click", function() {
-        if (filterContainer.style.display === "none" || filterContainer.style.display === "") {
-            filterContainer.style.display = "block";
-        } else {
-            filterContainer.style.display = "none";
-        }
-    });
 
 });

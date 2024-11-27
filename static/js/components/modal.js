@@ -1,7 +1,15 @@
-// modal.js
+// createProjectModal.js
 import { getCampaignTypes } from "../services/campaignTypeService.js";
 import { getClients } from "../services/clientService.js";
 import { createProject } from "../services/projectService.js";
+import { 
+    showProjectAddSuccesAlert,
+    showTaskAddSuccesAlert,
+    showInteractionAddSuccesAlert,
+    showTaskUpdateSuccesAlert,
+    showErrorAlert 
+} from "../components/alerts.js";
+
 const body = document.body;
 
 export function openModal() {
@@ -129,9 +137,11 @@ function createNewProject() {
     createProject(projectData)
         .then(response => {
             console.log('Proyecto creado', response);
+            showProjectAddSuccesAlert();
             closeModal();
         })
         .catch(error => {
             console.error("Error creando proyecto", error);
+            showErrorAlert();
         });
 }

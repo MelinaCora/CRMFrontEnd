@@ -1,3 +1,5 @@
+//createInteractionModal.js
+
 import { updateProjectInteractions } from "../services/projectService.js";
 import { getInteractionTypes } from "../services/interactionTypeService.js";
 

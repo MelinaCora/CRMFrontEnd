@@ -4,9 +4,6 @@ import { getClients } from "../services/clientService.js";
 import { createProject } from "../services/projectService.js";
 import { 
     showProjectAddSuccesAlert,
-    showTaskAddSuccesAlert,
-    showInteractionAddSuccesAlert,
-    showTaskUpdateSuccesAlert,
     showErrorAlert 
 } from "../components/alerts.js";
 
@@ -117,22 +114,30 @@ function createNewProject() {
     const projectName = document.getElementById('projectName').value;
     const campaignType = parseInt(document.getElementById('campaignType').value); 
     const client = parseInt(document.getElementById('client').value); 
-    const startDate = new Date(document.getElementById('startDate').value).toISOString().split('T')[0];
-    const endDate = new Date(document.getElementById('endDate').value).toISOString().split('T')[0];
-    
-    if (!projectName || isNaN(campaignType) || isNaN(client) || !startDate || !endDate) {
+    const startDateInput = document.getElementById('startDate').value;
+    const endDateInput = document.getElementById('endDate').value;
+
+    if (!projectName || isNaN(campaignType) || isNaN(client) || !startDateInput || !endDateInput) {
         console.error("Por favor, complete todos los campos.");
         showErrorAlert();
         return; 
     }
-    
+
+    const startDate = new Date(startDateInput);
+    startDate.setHours(0, 0, 0, 0); // Inicio del día
+
+    const endDate = new Date(endDateInput);
+    endDate.setHours(23, 59, 59, 999); // Fin del día   
+
+    const localStartDate = startDate.toISOString().slice(0, -1); // Eliminar la "Z"
+    const localEndDate = endDate.toISOString().slice(0, -1); // Eliminar la "Z"
 
     const projectData = {
         name: projectName,
         campaignType: campaignType,
         client: client,
-        startDate: startDate,
-        endDate: endDate
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString()
     };
 
     createProject(projectData)

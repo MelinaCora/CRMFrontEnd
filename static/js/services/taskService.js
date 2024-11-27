@@ -1,16 +1,33 @@
+//taskService.js
+
 import { PROJECT_URLS } from "../components/utilities.js";
 
 export const updateTask = async (taskId, taskData) => {
   try {
+    
+    const formattedTask = {
+      name: taskData.name,
+      dueDate: taskData.dueDate,
+      user: taskData.user,
+      status: taskData.status,
+    };
+
     const response = await fetch(PROJECT_URLS.UPDATE_TASK(taskId), {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(taskData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formattedTask),
     });
-    if (!response.ok) throw new Error("Error updating task");
+
+    if (!response.ok) {
+      throw new Error(`Error updating task: ${response.statusText}`);
+    }
+
+    // Retornar la respuesta en formato JSON
     return await response.json();
   } catch (error) {
-    console.error(error);
+    console.error("Error al actualizar la tarea:", error);
     throw error;
   }
 };

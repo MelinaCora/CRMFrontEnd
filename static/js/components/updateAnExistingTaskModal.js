@@ -110,29 +110,33 @@ function loadTaskData(projectId, taskId) {
 
 export function updateTaskData(event, taskId) {
     event.preventDefault();
-
-    const description = document.getElementById('editTaskDescription').value;
-    const userId = parseInt(document.getElementById('editUserSelect').value);
-    const statusId = parseInt(document.getElementById('editStatusSelect').value);
-    const dueDate = document.getElementById('editDueDate').value;
-
-    const updatedTask = {
-        description,
-        userId,
-        statusId,
-        dueDate
-    };
-
+  
+    // Obtener los valores del formulario
+    const name = document.getElementById("editTaskDescription").value.trim();
+    const dueDate = document.getElementById("editDueDate").value;
+    const user = parseInt(document.getElementById("editUserSelect").value);
+    const status = parseInt(document.getElementById("editStatusSelect").value);
+  
+    // Validaciones en el frontend
+    if (!name || !dueDate || !user || !status) {
+      alert("Por favor, completa todos los campos antes de guardar.");
+      return;
+    }
+  
+    const taskData = { name, dueDate, user, status };
+  
     // Llamar al servicio para actualizar la tarea
-    updateTask(taskId, updatedTask)
-        .then(response => {
-            console.log("Tarea actualizada exitosamente", response);
-            closeEditModal(); // Cerrar el modal después de actualizar
-        })
-        .catch(error => {
-            console.error("Error actualizando la tarea", error);
-        });
-}
+    updateTask(taskId, taskData)
+      .then((updatedTask) => {
+        console.log("Tarea actualizada:", updatedTask);
+        showTaskUpdateSuccesAlert();
+        closeEditModal();
+      })
+      .catch((error) => {
+        showErrorAlert();
+        console.error(error);
+      });
+  }
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOMContentLoaded"); 
@@ -141,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!body.classList.contains('listener-registered')) {
         body.addEventListener('click', openEditModalHandler);
-        body.classList.add('listener-registered'); // Marca que el listener ya está registrado
+        body.classList.add('listener-registered');
     }
 
     // Función para manejar la apertura del modal

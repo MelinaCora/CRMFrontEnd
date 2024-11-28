@@ -66,9 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   <span class="task-name">${task.name}</span>
                   <span class="task-status">${task.status ? task.status.name : 'No disponible'}</span>
                   <span class="task-assigned">${task.userAssigned ? task.userAssigned.name : 'No disponible'}</span>
-                  <button class="edit-btn" data-task-id="${task.id}" data-project-id="${projectId}">
-                    <i class="fas fa-file-signature" style="color: white;font-size: 1.3rem;"></i>
-                  </button>
+                  <button class="edit-btn" data-task-id="${task.id}" data-project-id="${projectId}">✏️</button>
                 </div>
               `;
               tasksContainer.appendChild(taskDiv);

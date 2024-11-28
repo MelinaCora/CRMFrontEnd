@@ -6,7 +6,7 @@ import { getCampaignTypes } from "../services/campaignTypeService.js";
 import { showSpinner, hideSpinner } from "../components/spinners.js";
 
 let currentPage = 0;
-const pageSize = 3;
+const pageSize = 6;
 
 const loadFilters = async () => {
     try {

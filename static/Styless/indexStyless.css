@@ -8,24 +8,23 @@
     padding: 20px;
 }
 
-.project-card {
-    background-color: grey;
+.project-card {    
     color: #ffffff;
     border-radius: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    width: 100%;
+    box-shadow: 0px 4px 8px rgba(84, 83, 168, 0.651);
+    padding: 5px;
+    width: 30%;
     transition: transform 0.2s ease-in-out;
 }
 
 .card-conteiner {
     background-color:var(--background-color);
     border-radius: 20px;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
-    display: flex; 
-    flex-wrap: wrap;
-    gap: 20px; /* Espaciado entre los datos */   
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en columna */
+    gap: 10px; /* Espaciado entre los datos */   
 }
 
 .project-card h2 {

@@ -94,16 +94,17 @@ button {
 }
 
 .task-card, .interaction-card {
+    display: flex;
     background-color: var(--background-color);
     border-radius: 20px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 100%;
+    align-items: center; 
     height: 35px;
 }
-
-.task-name, .task-status, .task-assigned, .interaction-description, .interaction-type {
-    flex: 1; 
+.task-card span, .interaction-card span {
+    flex: 1; /* Hace que cada span ocupe el espacio disponible de manera equitativa */
 }
 
 .edit-btn {
@@ -116,7 +117,7 @@ background: none;
 }
 
 .edit-btn:hover {
-  background-color: var(--primary-button-color);
+  background-color: var(--primary-button-hover);
   border-radius: 20px;
 }
 

@@ -5,7 +5,7 @@ import { showSpinner, hideSpinner } from "../components/spinners.js";
 document.addEventListener('DOMContentLoaded', function () {
     
     const urlParams = new URLSearchParams(window.location.search);
-    const projectId = urlParams.get('id');   
+    const projectId = urlParams.get('id');       
     
     async function renderProject(projectId) {
       try {
@@ -66,7 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
                   <span class="task-name">${task.name}</span>
                   <span class="task-status">${task.status ? task.status.name : 'No disponible'}</span>
                   <span class="task-assigned">${task.userAssigned ? task.userAssigned.name : 'No disponible'}</span>
-                  <button class="edit-btn" data-task-id="${task.id}" data-project-id="${projectId}">✏️</button>
+                  <button class="edit-btn" data-task-id="${task.id}" data-project-id="${projectId}">
+                    <i class="fas fa-pencil-alt" style="color: white;font-size: 1.2rem;"></i>
+                  </button>
                 </div>
               `;
               tasksContainer.appendChild(taskDiv);

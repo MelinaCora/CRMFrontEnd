@@ -108,17 +108,12 @@ button {
 }
 
 .edit-btn {
-background: none;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 50px;
+  padding: 10px;
   cursor: pointer;
-}
-
-.edit-btn:hover {
-  background-color: var(--primary-button-hover);
-  border-radius: 20px;
+  background: none;
 }
 
 .add-task-btn, .add-interaction-btn {

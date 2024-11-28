@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   <span class="task-status">${task.status ? task.status.name : 'No disponible'}</span>
                   <span class="task-assigned">${task.userAssigned ? task.userAssigned.name : 'No disponible'}</span>
                   <button class="edit-btn" data-task-id="${task.id}" data-project-id="${projectId}">
-                    <i class="fas fa-pencil-alt" style="color: white;font-size: 1.2rem;"></i>
+                    <i class="fas fa-file-signature" style="color: white;font-size: 1.3rem;"></i>
                   </button>
                 </div>
               `;
